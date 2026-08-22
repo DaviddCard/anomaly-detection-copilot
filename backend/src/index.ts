@@ -1,8 +1,12 @@
 import express from 'express';
 import pool from './db';
+import authRouter from './auth';
 
 const app = express();
 const PORT = 3000;
+
+app.use(express.json());
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
     res.send('server running');
